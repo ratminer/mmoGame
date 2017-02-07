@@ -1,0 +1,13 @@
+group 'robertfernandes'
+version '1.0-SNAPSHOT'
+
+jar {
+    baseName = 'client'
+    version = '0.1.0'
+}
+
+dependencies {
+    compile project(':server')
+    compile 'junit:junit:4.12'
+    compile 'org.springframework.boot:spring-boot-starter-test'
+}

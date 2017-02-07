@@ -1,0 +1,14 @@
+option java_package = "model";
+option java_outer_classname = "Player";
+
+message User {
+    // player id
+    required int32 id = 1;
+
+    // player userName
+    required string userName = 2;
+
+    // player position
+    required int32 x = 3;
+    required int32 y = 4;
+}

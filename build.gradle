@@ -1,0 +1,32 @@
+buildscript {
+    repositories {
+        mavenCentral()
+        maven { url "http://central.maven.org/maven2/"}
+        maven { url "http://repo.spring.io/release" }
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.5.1.RELEASE")
+        classpath("com.google.protobuf:protobuf-gradle-plugin:0.8.0")
+    }
+}
+
+allprojects {
+    group 'robertfernandes'
+    version '1.0'
+}
+
+subprojects {
+    apply plugin: 'java'
+    apply plugin: 'org.springframework.boot'
+
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        compile("org.springframework.boot:spring-boot-starter-web")
+
+        compileOnly("org.projectlombok:lombok:1.16.12")
+    }
+}
+

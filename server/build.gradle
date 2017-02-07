@@ -1,0 +1,42 @@
+group 'robertfernandes'
+version '1.0-SNAPSHOT'
+
+jar {
+    baseName = 'server'
+    version = '0.1.0'
+}
+
+apply plugin: 'com.google.protobuf'
+apply plugin: 'idea'
+
+dependencies {
+    // https://mvnrepository.com/artifact/com.googlecode.protobuf-java-format/protobuf-java-format
+    compile group: 'com.googlecode.protobuf-java-format', name: 'protobuf-java-format', version: '1.4'
+
+    compile("com.google.protobuf:protobuf-java:3.1.0")
+}
+
+sourceSets {
+    main {
+        proto {
+            srcDir "$projectDir/proto"
+        }
+    }
+}
+
+protobuf {
+    protoc {
+        artifact = 'com.google.protobuf:protoc:3.1.0'
+    }
+    generatedFilesBaseDir = "${project(":server").projectDir}/gen"
+}
+
+clean {
+    delete protobuf.generatedFilesBaseDir
+}
+
+idea {
+    module {
+        sourceDirs += file("${protobuf.generatedFilesBaseDir}/main/java")
+    }
+}
